@@ -1,6 +1,7 @@
 package View;
 
 import Mock.PesquisaCPF;
+import Mock.PesquisaProduto;
 import View.CadastroClientes;
 import Model.SelectBancoMySQL;
 import java.text.DateFormat;
@@ -279,12 +280,34 @@ public class Vendas extends javax.swing.JFrame {
 
     private void JBPesquisarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBPesquisarProdutoActionPerformed
 
-        SelectBancoMySQL selectproduto = new SelectBancoMySQL();
+        // SelectBancoMySQL selectproduto = new SelectBancoMySQL();
+        //MOCK
+        PesquisaProduto pesquisaproduto = new PesquisaProduto();
 
         do {
             try {
                 idproduto = Integer.valueOf(JIDProduto.getText());
                 codigoprod = true;
+
+                if (pesquisaproduto.GetNomeProduto(idproduto)==null) {
+
+                    String[] opcaoselecionada = {"Sim", "Não"};
+
+                    String novocliente = (String) JOptionPane.showInputDialog(null, "Deseja cadastrar um novo produto?",
+                            "Produto não cadastrado", JOptionPane.QUESTION_MESSAGE, null, opcaoselecionada, opcaoselecionada[0]);
+
+                    //SE ESCOLHER CADASTRAR UM NOVO CLIENTE ABRE O MENU CADASTRO DE CLIENTES
+                    if (novocliente.equals("Sim")) {
+
+                        ControleEstoque controleestoque = new ControleEstoque();
+                        controleestoque.setSize(800, 800);
+                        controleestoque.setVisible(true);
+
+                        JIDProduto.setText("");
+
+                    }
+                }
+                /*
                 selectproduto.SelectProduto(idproduto);
                 JNomeProduto.setText(String.valueOf(selectproduto.GetnomeProduto()));
                 JFaixaEtaria.setText(String.valueOf(selectproduto.GetFaixaEtaria()));
@@ -292,6 +315,8 @@ public class Vendas extends javax.swing.JFrame {
                 JGarantia.setText(String.valueOf(selectproduto.GetGarantia()));
                 JVendaFabricante.setText(String.valueOf(selectproduto.GetFabricante()));
                 jFormattedValorDesconto.setText(String.valueOf("R$" + selectproduto.GetValorDesconto()));
+                
+                 */
             } catch (NumberFormatException erro) {
                 JOptionPane.showMessageDialog(null, "Código de produto inválido");
                 break;
@@ -304,10 +329,9 @@ public class Vendas extends javax.swing.JFrame {
     private void JBPesquisarCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBPesquisarCPFActionPerformed
 
         //SelectBancoMySQL pesquisarcliente = new SelectBancoMySQL();
-
-       //MOCK
+        //MOCK
         PesquisaCPF pesquisacpf = new PesquisaCPF();
-        
+
         boolean cpfdigitado = false;
         System.out.println(jFormattedCPFVenda.getText());
 
@@ -351,11 +375,9 @@ public class Vendas extends javax.swing.JFrame {
 
             //SE O CPF INSERIDO JA ESTIVER NA BASE FAZ O INSERT NO BANCO
             //JNomeCliente.setText(String.valueOf(pesquisarcliente.GetNomeCliente()));
-
             //MOCK
             JNomeCliente.setText(String.valueOf(pesquisacpf.Getnome()));
 
-            
         }
 
         // TODO add your handling code here:
@@ -418,8 +440,6 @@ public class Vendas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JButtonAdicionarCarrinhoActionPerformed
 
-    
-    
 
     private void JButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonExcluirActionPerformed
 
@@ -441,9 +461,7 @@ public class Vendas extends javax.swing.JFrame {
                     //Obtém o produto
                     String nomeproduto = (String) jTableProdutos.getValueAt(row, 0);
                     //Atualiza a lista após a "exclusão"
-                    
 
-                    
                 } catch (Exception e) {
                     //Se ocorrer algum erro técnico, mostra-o no console,
                     //mas esconde-o do usuário

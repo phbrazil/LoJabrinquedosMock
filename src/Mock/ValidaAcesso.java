@@ -17,7 +17,7 @@ public class ValidaAcesso {
 
         boolean acesso = false;
 
-        if (Username.equals("Paulo.Bezerra") || Username.equals("Lucas.Medeiros") || Username.equals("Pedro.Paulo") && password.equals("mortadela1")) {
+        if (Username.equals("Paulo.Bezerra") || Username.equals("Lucas.Medeiros") || Username.equals("Pedro.Paulo")|| Username.equals("Andre.Pereira") && password.equals("mortadela1")) {
 
             acesso = true;
         } else {

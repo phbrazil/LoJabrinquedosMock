@@ -1,6 +1,6 @@
 package View;
 
-
+import Mock.PesquisaProduto;
 import Model.InsertBancoMySQL;
 import javax.swing.JOptionPane;
 
@@ -129,7 +129,8 @@ public class ControleEstoque extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        InsertBancoMySQL novoproduto = new InsertBancoMySQL();
+        // InsertBancoMySQL novoproduto = new InsertBancoMySQL();
+        PesquisaProduto alimentarestoque = new PesquisaProduto();
 
         String nomeproduto = "", faixaetaria = "", fabricante = "", prazogarantia = "";
         int quantidade = 0;
@@ -161,16 +162,16 @@ public class ControleEstoque extends javax.swing.JFrame {
         //SE O NOME DO PRODUTO FOR INVALIDO
         if (JNomeProduto.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Nome do produto inválido");
-        
-        //SE O NOME DO FABRINCANTE FOR INVALIDO
+
+            //SE O NOME DO FABRINCANTE FOR INVALIDO
         } else if (JFabricante.getText().equals("")) {
 
             JOptionPane.showMessageDialog(null, "Fabricante inválido");
 
-        //O ELSE GRAVA UM NOVO PRODUTO
+            //O ELSE GRAVA UM NOVO PRODUTO
         } else if (tudook == true) {
 
-            novoproduto.InsertNovoProduto(codigobarras, nomeproduto, valor, faixaetaria, fabricante, prazogarantia, quantidade);
+            alimentarestoque.AlimentarEstoque(nomeproduto, valor, faixaetaria, fabricante, prazogarantia, quantidade);
 
             JNomeProduto.setText("");
             JFabricante.setText("");
