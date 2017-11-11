@@ -11,8 +11,8 @@ package Mock;
  */
 public class PesquisaProduto {
 
-    int tamanho = 10;
-    int contador = 1;
+    private int tamanho = 10;
+    //private int contador = 1;
 
     private int[] codigobarras = new int[tamanho];
 
@@ -27,7 +27,7 @@ public class PesquisaProduto {
     private int[] Quantidade = new int[tamanho];
     private int[] idproduto = new int[tamanho];
 
-    public void AlimentarEstoque(String nomeproduto, double valor, String faixaetaria, String fabricante, String prazogarantia, int quantidade) {
+    public void AlimentarEstoque(int contador, String nomeproduto, double valor, String faixaetaria, String fabricante, String prazogarantia, int quantidade) {
 
         this.idproduto[contador] = contador;
         this.codigobarras[contador] = contador;

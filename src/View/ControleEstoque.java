@@ -129,6 +129,7 @@ public class ControleEstoque extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
+        int contador = 1;
         // InsertBancoMySQL novoproduto = new InsertBancoMySQL();
         PesquisaProduto alimentarestoque = new PesquisaProduto();
 
@@ -171,12 +172,13 @@ public class ControleEstoque extends javax.swing.JFrame {
             //O ELSE GRAVA UM NOVO PRODUTO
         } else if (tudook == true) {
 
-            alimentarestoque.AlimentarEstoque(nomeproduto, valor, faixaetaria, fabricante, prazogarantia, quantidade);
+            alimentarestoque.AlimentarEstoque(contador, nomeproduto, valor, faixaetaria, fabricante, prazogarantia, quantidade);
 
             JNomeProduto.setText("");
             JFabricante.setText("");
             jFormattedValorProduto.setText("");
             jSpinnerQuantidadeProd.setValue(1);
+            JCodigoBarras.setText("");
         }
 
         // TODO add your handling code here:
