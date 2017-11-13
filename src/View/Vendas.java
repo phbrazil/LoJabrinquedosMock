@@ -1,7 +1,8 @@
 package View;
 
 import Mock.PesquisaCPF;
-import Mock.PesquisaProduto;
+import Mock.CadastrarProduto;
+import Mock.ListaProdutos;
 import View.CadastroClientes;
 import Model.SelectBancoMySQL;
 import java.text.DateFormat;
@@ -282,15 +283,16 @@ public class Vendas extends javax.swing.JFrame {
 
         // SelectBancoMySQL selectproduto = new SelectBancoMySQL();
         //MOCK
-        PesquisaProduto pesquisaproduto = new PesquisaProduto();
-
+        CadastrarProduto cadastrarproduto = new CadastrarProduto();
+        
+        ListaProdutos listaprodutos = new ListaProdutos();
+        
         do {
             try {
                 idproduto = Integer.valueOf(JIDProduto.getText());
                 codigoprod = true;
 
-                if (pesquisaproduto.GetNomeProduto(idproduto)==null) {
-                    System.out.println("nome é "+pesquisaproduto.GetNomeProduto(idproduto));
+                if (listaprodutos.GetNome(idproduto)==null) {
                     String[] opcaoselecionada = {"Sim", "Não"};
 
                     String novocliente = (String) JOptionPane.showInputDialog(null, "Deseja cadastrar um novo produto?",
@@ -308,14 +310,14 @@ public class Vendas extends javax.swing.JFrame {
                     }
                 } else {
 
-                    pesquisaproduto.GetNomeProduto(idproduto);
+                    cadastrarproduto.GetNomeProduto(idproduto);
 
-                    JNomeProduto.setText(String.valueOf(pesquisaproduto.GetNomeProduto(idproduto)));
-                    //JFaixaEtaria.setText(String.valueOf(pesquisaproduto.Get()));
-                    JPreco.setText(String.valueOf("R$" + pesquisaproduto.GetPreco(idproduto)));
-                    //JGarantia.setText(String.valueOf(selectproduto.GetGarantia()));
-                    //JVendaFabricante.setText(String.valueOf(selectproduto.GetFabricante()));
-                    //jFormattedValorDesconto.setText(String.valueOf("R$" + selectproduto.GetValorDesconto()));
+                    JNomeProduto.setText(String.valueOf(listaprodutos.GetNome(idproduto)));
+                    JFaixaEtaria.setText(String.valueOf(listaprodutos.GetFaixaEtaria(idproduto)));
+                    JPreco.setText(String.valueOf("R$" + listaprodutos.GetValor(idproduto)));
+                    JGarantia.setText(String.valueOf(listaprodutos.GetPrazoGarantia(idproduto)));
+                    JVendaFabricante.setText(String.valueOf(listaprodutos.GetFabricante(idproduto)));
+                    jFormattedValorDesconto.setText(String.valueOf("R$" + listaprodutos.GetValorDesconto(idproduto)));
 
                 }
                 /*

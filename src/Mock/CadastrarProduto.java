@@ -11,10 +11,9 @@ import javax.swing.JOptionPane;
  *
  * @author paulo.hbezerra
  */
-public class PesquisaProduto {
+public class CadastrarProduto {
 
     private int tamanho = 10;
-    //private int contador = 1;
 
     private int[] codigobarras = new int[tamanho];
     String[] nomeproduto = new String[tamanho];
