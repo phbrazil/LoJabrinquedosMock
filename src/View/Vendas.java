@@ -289,8 +289,8 @@ public class Vendas extends javax.swing.JFrame {
                 idproduto = Integer.valueOf(JIDProduto.getText());
                 codigoprod = true;
 
-                if (pesquisaproduto.GetNomeProduto(idproduto) == null) {
-
+                if (pesquisaproduto.GetNomeProduto(idproduto)==null) {
+                    System.out.println("nome é "+pesquisaproduto.GetNomeProduto(idproduto));
                     String[] opcaoselecionada = {"Sim", "Não"};
 
                     String novocliente = (String) JOptionPane.showInputDialog(null, "Deseja cadastrar um novo produto?",

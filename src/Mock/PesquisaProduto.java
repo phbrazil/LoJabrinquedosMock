@@ -17,17 +17,16 @@ public class PesquisaProduto {
     //private int contador = 1;
 
     private int[] codigobarras = new int[tamanho];
-
-    private String[] nomeproduto = new String[tamanho];
-
+    String[] nomeproduto = new String[tamanho];
     private double[] valor = new double[tamanho];
-
     private double[] valordesconto = new double[tamanho];
     private String[] FaixaEtaria = new String[tamanho];
     private String[] Fabricante = new String[tamanho];
     private String[] PrazoGarantia = new String[tamanho];
     private int[] Quantidade = new int[tamanho];
     private int[] idproduto = new int[tamanho];
+    
+    
 
     public void AlimentarEstoque(int idproduto, String nomeproduto, double valor, String faixaetaria, String fabricante, String prazogarantia, int quantidade) {
         if(idproduto<=10){
@@ -40,6 +39,7 @@ public class PesquisaProduto {
         this.PrazoGarantia[idproduto] = prazogarantia;
         this.Quantidade[idproduto] = quantidade;
                     System.out.println("uehueu"+this.nomeproduto[idproduto]);
+                    System.out.println("posicao no vetor "+this.idproduto[idproduto]);
 
         }else{
             
@@ -49,7 +49,7 @@ public class PesquisaProduto {
     }
 
     public String GetNomeProduto(int idproduto) {
-
+        
         return nomeproduto[idproduto];
 
     }
