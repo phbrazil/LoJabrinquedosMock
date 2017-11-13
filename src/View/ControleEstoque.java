@@ -15,6 +15,8 @@ import javax.swing.JOptionPane;
  */
 public class ControleEstoque extends javax.swing.JFrame {
 
+    private int contador = 1;
+
     /**
      * Creates new form ControleEstoque
      */
@@ -129,13 +131,12 @@ public class ControleEstoque extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        int contador = 1;
         // InsertBancoMySQL novoproduto = new InsertBancoMySQL();
         PesquisaProduto alimentarestoque = new PesquisaProduto();
 
         String nomeproduto = "", faixaetaria = "", fabricante = "", prazogarantia = "";
         int quantidade = 0;
-        long codigobarras = 0;
+        int codigobarras = 0;
 
         double valor = 0;
 
@@ -144,7 +145,7 @@ public class ControleEstoque extends javax.swing.JFrame {
         //TENTA PEGAR OS DADOS DO NOVO PRODUTO
         do {
             try {
-                codigobarras = Long.valueOf(JCodigoBarras.getText());
+                codigobarras = Integer.valueOf(JCodigoBarras.getText());
                 nomeproduto = String.valueOf(JNomeProduto.getText());
                 fabricante = String.valueOf(JFabricante.getText());
                 faixaetaria = String.valueOf(jComboFaixa.getSelectedItem());
@@ -172,8 +173,8 @@ public class ControleEstoque extends javax.swing.JFrame {
             //O ELSE GRAVA UM NOVO PRODUTO
         } else if (tudook == true) {
 
-            alimentarestoque.AlimentarEstoque(contador, nomeproduto, valor, faixaetaria, fabricante, prazogarantia, quantidade);
-
+            alimentarestoque.AlimentarEstoque(codigobarras, nomeproduto, valor, faixaetaria, fabricante, prazogarantia, quantidade);
+            
             JNomeProduto.setText("");
             JFabricante.setText("");
             jFormattedValorProduto.setText("");
@@ -181,7 +182,6 @@ public class ControleEstoque extends javax.swing.JFrame {
             JCodigoBarras.setText("");
         }
 
-        contador++;
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 

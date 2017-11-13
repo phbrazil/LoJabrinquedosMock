@@ -289,7 +289,7 @@ public class Vendas extends javax.swing.JFrame {
                 idproduto = Integer.valueOf(JIDProduto.getText());
                 codigoprod = true;
 
-                if (pesquisaproduto.GetNomeProduto(idproduto)==null) {
+                if (pesquisaproduto.GetNomeProduto(idproduto) == null) {
 
                     String[] opcaoselecionada = {"Sim", "Não"};
 
@@ -306,6 +306,17 @@ public class Vendas extends javax.swing.JFrame {
                         JIDProduto.setText("");
 
                     }
+                } else {
+
+                    pesquisaproduto.GetNomeProduto(idproduto);
+
+                    JNomeProduto.setText(String.valueOf(pesquisaproduto.GetNomeProduto(idproduto)));
+                    //JFaixaEtaria.setText(String.valueOf(pesquisaproduto.Get()));
+                    JPreco.setText(String.valueOf("R$" + pesquisaproduto.GetPreco(idproduto)));
+                    //JGarantia.setText(String.valueOf(selectproduto.GetGarantia()));
+                    //JVendaFabricante.setText(String.valueOf(selectproduto.GetFabricante()));
+                    //jFormattedValorDesconto.setText(String.valueOf("R$" + selectproduto.GetValorDesconto()));
+
                 }
                 /*
                 selectproduto.SelectProduto(idproduto);

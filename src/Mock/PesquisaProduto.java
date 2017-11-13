@@ -5,6 +5,8 @@
  */
 package Mock;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author paulo.hbezerra
@@ -27,17 +29,22 @@ public class PesquisaProduto {
     private int[] Quantidade = new int[tamanho];
     private int[] idproduto = new int[tamanho];
 
-    public void AlimentarEstoque(int contador, String nomeproduto, double valor, String faixaetaria, String fabricante, String prazogarantia, int quantidade) {
+    public void AlimentarEstoque(int idproduto, String nomeproduto, double valor, String faixaetaria, String fabricante, String prazogarantia, int quantidade) {
+        if(idproduto<=10){
+        this.idproduto[idproduto] = idproduto;
+        this.codigobarras[idproduto] = idproduto;
+        this.nomeproduto[idproduto] = nomeproduto;
+        this.valor[idproduto] = valor;
+        this.FaixaEtaria[idproduto] = fabricante;
+        this.Fabricante[idproduto] = fabricante;
+        this.PrazoGarantia[idproduto] = prazogarantia;
+        this.Quantidade[idproduto] = quantidade;
+                    System.out.println("uehueu"+this.nomeproduto[idproduto]);
 
-        this.idproduto[contador] = contador;
-        this.codigobarras[contador] = contador;
-        this.nomeproduto[contador] = nomeproduto;
-        this.valor[contador] = valor;
-        this.FaixaEtaria[contador] = fabricante;
-        this.Fabricante[contador] = fabricante;
-        this.PrazoGarantia[contador] = prazogarantia;
-        this.Quantidade[contador] = quantidade;
-        contador++;
+        }else{
+            
+            JOptionPane.showMessageDialog(null, "Lista cheia ou id inválido");
+        }
 
     }
 

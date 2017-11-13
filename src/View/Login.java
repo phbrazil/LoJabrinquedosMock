@@ -102,14 +102,18 @@ public class Login extends javax.swing.JFrame {
 
         boolean validacesso = validaacesso.ValidaAcesso(JUsername.getText(), jPasswordField1.getText());
 
-        if (validacesso == true) {
+        /*if (validacesso == true) {
             MenuInicial telaInicial = new MenuInicial();
             telaInicial.setSize(800, 800);
             telaInicial.setVisible(true);
             JUsername.setText("");
             jPasswordField1.setText("");
 
-        }
+        }*/
+                    MenuInicial telaInicial = new MenuInicial();
+            telaInicial.setSize(800, 800);
+            telaInicial.setVisible(true);
+
 
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
