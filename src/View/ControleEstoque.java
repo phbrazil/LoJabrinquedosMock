@@ -133,6 +133,8 @@ public class ControleEstoque extends javax.swing.JFrame {
 
         // InsertBancoMySQL novoproduto = new InsertBancoMySQL();
         CadastrarProduto alimentarestoque = new CadastrarProduto();
+        
+        ControleEstoque controleestoque = new ControleEstoque();
 
         String nomeproduto = "", faixaetaria = "", fabricante = "", prazogarantia = "";
         int quantidade = 0;
@@ -163,12 +165,12 @@ public class ControleEstoque extends javax.swing.JFrame {
 
         //SE O NOME DO PRODUTO FOR INVALIDO
         if (JNomeProduto.getText().length()<=5) {
-            JOptionPane.showMessageDialog(null, "Nome do produto inválido");
+            JOptionPane.showMessageDialog(null, "Nome do produto muito curto");
 
             //SE O NOME DO FABRINCANTE FOR INVALIDO
         } else if (JFabricante.getText().length()<=1) {
 
-            JOptionPane.showMessageDialog(null, "Fabricante inválido");
+            JOptionPane.showMessageDialog(null, "Nome de Fabricante muito curto");
 
             //O ELSE GRAVA UM NOVO PRODUTO
         } else if (tudook == true) {

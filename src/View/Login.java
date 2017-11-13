@@ -25,9 +25,9 @@ public class Login extends javax.swing.JFrame {
         jPasswordField1.setText("");
         JUsername.setText("");
 
-        ImageIcon TelaInicialGIF = new ImageIcon("Images/Madrugao.gif");
+        ImageIcon TelaInicialGIF = new ImageIcon("Images/Login.chaves.png");
+        JLoginInicial.setIcon(TelaInicialGIF);
 
-        LabelLoginGIF.setIcon(TelaInicialGIF);
     }
 
     /**
@@ -44,25 +44,26 @@ public class Login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jPasswordField1 = new javax.swing.JPasswordField();
-        jLabel3 = new javax.swing.JLabel();
-        LabelLoginGIF = new javax.swing.JLabel();
+        JLoginInicial = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
         JUsername.setText("jTextField1");
         getContentPane().add(JUsername);
-        JUsername.setBounds(260, 60, 190, 45);
+        JUsername.setBounds(100, 90, 210, 30);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("User");
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Insira o usuário");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(260, 40, 59, 21);
+        jLabel1.setBounds(100, 70, 100, 21);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Senha");
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Insira a senha");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(260, 120, 213, 23);
+        jLabel2.setBounds(100, 120, 213, 23);
 
         jButton1.setText("Entrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -71,7 +72,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(310, 640, 65, 23);
+        jButton1.setBounds(170, 180, 65, 23);
 
         jPasswordField1.setText("jPasswordField1");
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
@@ -80,15 +81,12 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jPasswordField1);
-        jPasswordField1.setBounds(260, 150, 213, 35);
+        jPasswordField1.setBounds(100, 140, 213, 30);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Loja de Brinquedos");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(190, 10, 305, 33);
-        getContentPane().add(LabelLoginGIF);
-        LabelLoginGIF.setBounds(160, 210, 400, 400);
+        JLoginInicial.setIcon(new javax.swing.ImageIcon("C:\\Users\\paulo.hbezerra\\Documents\\NetBeansProjects\\LoJabrinquedosMock-master\\Images\\Login.chaves.png")); // NOI18N
+        JLoginInicial.setText("jLabel4");
+        getContentPane().add(JLoginInicial);
+        JLoginInicial.setBounds(0, 0, 400, 250);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -96,7 +94,6 @@ public class Login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         //SelectBancoMySQL banco = new SelectBancoMySQL();
-        
         //MOCK
         ValidaAcesso validaacesso = new ValidaAcesso();
 
@@ -110,10 +107,11 @@ public class Login extends javax.swing.JFrame {
             jPasswordField1.setText("");
 
         }*/
-                    MenuInicial telaInicial = new MenuInicial();
-            telaInicial.setSize(800, 800);
-            telaInicial.setVisible(true);
-
+        MenuInicial telaInicial = new MenuInicial();
+        telaInicial.setSize(800, 800);
+        telaInicial.setVisible(true);
+        
+        
 
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -153,22 +151,24 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Login Login = new Login();
-
-                Login.setSize(800, 800);
-                Login.setVisible(true);
+                
+                Login login = new Login();
+                
+                login.setVisible(true);
+                login.setSize(400, 250);
+                login.setResizable(false);
+                login.setLocationRelativeTo(null);
 
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel JLoginInicial;
     private javax.swing.JTextField JUsername;
-    private javax.swing.JLabel LabelLoginGIF;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPasswordField jPasswordField1;
     // End of variables declaration//GEN-END:variables
 }

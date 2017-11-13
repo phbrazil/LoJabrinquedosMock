@@ -5,6 +5,8 @@
  */
 package Mock;
 
+import View.ControleEstoque;
+import View.Vendas;
 import javax.swing.JOptionPane;
 
 /**
