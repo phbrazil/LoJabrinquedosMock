@@ -32,7 +32,7 @@ public class ServiceCepCliente {
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
-            conexao = BancoMySQL.getConnection();
+           // conexao = BancoMySQL.getConnection();
 
             java.sql.Statement st = conexao.createStatement();
             select = "select * from CEPS where cep = '" + CEP + "'";

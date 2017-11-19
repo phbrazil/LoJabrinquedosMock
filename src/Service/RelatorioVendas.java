@@ -30,7 +30,7 @@ public class RelatorioVendas {
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
-            conexao = BancoMySQL.getConnection();
+            //conexao = BancoMySQL.getConnection();
 
             java.sql.Statement st = conexao.createStatement();
 
@@ -64,7 +64,7 @@ public class RelatorioVendas {
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
-            conexao = BancoMySQL.getConnection();
+            //conexao = BancoMySQL.getConnection();
 
             java.sql.Statement st = conexao.createStatement();
 

@@ -35,7 +35,7 @@ public class RelatorioProdutos {
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
-            conexao = BancoMySQL.getConnection();
+            //conexao = BancoMySQL.getConnection();
 
             java.sql.Statement st = conexao.createStatement();
 
@@ -76,7 +76,7 @@ public class RelatorioProdutos {
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
-            conexao = BancoMySQL.getConnection();
+            //conexao = BancoMySQL.getConnection();
 
             java.sql.Statement st = conexao.createStatement();
             select = "select count(*) as quantidadeprodutos from produtos";

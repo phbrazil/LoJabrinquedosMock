@@ -5,8 +5,9 @@
  */
 package Mock;
 
-import View.ControleEstoque;
-import View.Vendas;
+import Model.Produtos;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,50 +16,27 @@ import javax.swing.JOptionPane;
  */
 public class CadastrarProduto {
 
-    private int tamanho = 10;
+    private static List<Produtos> listaProdutos = new ArrayList<Produtos>();
 
-    private int[] codigobarras = new int[tamanho];
-    String[] nomeproduto = new String[tamanho];
-    private double[] valor = new double[tamanho];
-    private double[] valordesconto = new double[tamanho];
-    private String[] FaixaEtaria = new String[tamanho];
-    private String[] Fabricante = new String[tamanho];
-    private String[] PrazoGarantia = new String[tamanho];
-    private int[] Quantidade = new int[tamanho];
-    private int[] idproduto = new int[tamanho];
-    
-    
+    public void inserirProduto(Produtos produtos) {
+        listaProdutos.add(produtos);
 
-    public void AlimentarEstoque(int idproduto, String nomeproduto, double valor, String faixaetaria, String fabricante, String prazogarantia, int quantidade) {
-        if(idproduto<=10){
-        this.idproduto[idproduto] = idproduto;
-        this.codigobarras[idproduto] = idproduto;
-        this.nomeproduto[idproduto] = nomeproduto;
-        this.valor[idproduto] = valor;
-        this.FaixaEtaria[idproduto] = fabricante;
-        this.Fabricante[idproduto] = fabricante;
-        this.PrazoGarantia[idproduto] = prazogarantia;
-        this.Quantidade[idproduto] = quantidade;
-                    System.out.println("uehueu"+this.nomeproduto[idproduto]);
-                    System.out.println("posicao no vetor "+this.idproduto[idproduto]);
+    }
 
-        }else{
-            
-            JOptionPane.showMessageDialog(null, "Lista cheia ou id inválido");
+    public static Produtos obterProdutoLista(Integer codigobarras) {
+        if (codigobarras != null && !listaProdutos.isEmpty()) {
+            for (int i = 0; i < listaProdutos.size(); i++) {
+                if (listaProdutos.get(i) != null && listaProdutos.get(i).getCodigobarras() == codigobarras) {
+                    return listaProdutos.get(i);
+                
+                }
+            }
         }
-
+        return null;
     }
-
-    public String GetNomeProduto(int idproduto) {
-        
-        return nomeproduto[idproduto];
-
-    }
-
-    public double GetPreco(int idproduto) {
-
-        return valor[idproduto];
-
+    
+    public int TamanhoListaProduto(){
+        return listaProdutos.size();
     }
 
 }

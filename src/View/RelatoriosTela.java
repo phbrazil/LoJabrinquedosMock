@@ -5,10 +5,14 @@
  */
 package View;
 
+import Mock.CadastrarCliente;
+import Mock.CadastrarProduto;
+import Mock.VendasMock;
 import Service.RelatorioClientes;
 import Service.RelatorioProdutos;
 import Service.RelatorioVendas;
 import java.security.Provider;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -60,7 +64,7 @@ public class RelatoriosTela extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(110, 180, 90, 20);
 
-        jComboRelatorios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Total de Vendas", "Quantidade de Vendas Canceladas", "Novos Clientes", "Total de Clientes", "Maiores Compradors", "Total de Produtos", "Produtos mais Vendidos"}));
+        jComboRelatorios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Total de Produtos", "Total de Clientes","Total de Vendas"}));
         getContentPane().add(jComboRelatorios);
         jComboRelatorios.setBounds(280, 70, 220, 40);
 
@@ -71,7 +75,7 @@ public class RelatoriosTela extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BotaoGerarRelatorio);
-        BotaoGerarRelatorio.setBounds(370, 150, 59, 23);
+        BotaoGerarRelatorio.setBounds(370, 150, 77, 29);
 
         jTableClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [tamanhoObjeto][tamanhoObjeto],
@@ -100,13 +104,36 @@ public class RelatoriosTela extends javax.swing.JFrame {
 
         if (jComboRelatorios.getSelectedItem().equals("Total de Produtos")) {
 
-            Service.RelatorioProdutos relatorioproduto = new RelatorioProdutos();
-            int quantidade = relatorioproduto.SelectQuantosProdutos();
+            Mock.CadastrarProduto relatorioproduto = new CadastrarProduto();
 
-            for (int i = 1; i <= quantidade; i++) {
+            System.out.println("tamanho da lista" + relatorioproduto.TamanhoListaProduto());
 
-                relatorioproduto.SelectProduto(i);
+            //Service.RelatorioProdutos relatorioproduto = new RelatorioProdutos();
+            //int quantidade = relatorioproduto.SelectQuantosProdutos();
+            if (relatorioproduto.TamanhoListaProduto() == 0) {
+                JOptionPane.showMessageDialog(null, "Nenhum Produto na base");
+            } else {
+                for (int i = 1; i <= relatorioproduto.TamanhoListaProduto(); i++) {
 
+                    //relatorioproduto.SelectProduto(i);
+                    jTableClientes.setValueAt(relatorioproduto.obterProdutoLista(i).getNomeProduto(), linha, coluna);
+                    coluna++;
+                    jTableClientes.setValueAt("R$"+relatorioproduto.obterProdutoLista(i).getValor(), linha, coluna);
+                    coluna++;
+                    jTableClientes.setValueAt("R$"+relatorioproduto.obterProdutoLista(i).getValorDesconto(), linha, coluna);
+                    coluna++;
+                    jTableClientes.setValueAt(relatorioproduto.obterProdutoLista(i).getFaixaEtaria(), linha, coluna);
+                    coluna++;
+                    jTableClientes.setValueAt(relatorioproduto.obterProdutoLista(i).getFabricante(), linha, coluna);
+                    coluna++;
+                    jTableClientes.setValueAt(relatorioproduto.obterProdutoLista(i).getGarantia(), linha, coluna);
+                    coluna++;
+                    jTableClientes.setValueAt(relatorioproduto.obterProdutoLista(i).getQuantidade(), linha, coluna);
+                    linha++;
+                    coluna = 0;
+
+                }/*
+                
                 jTableClientes.setValueAt(relatorioproduto.GetcodigoBarras(), linha, coluna);
                 coluna++;
                 jTableClientes.setValueAt(relatorioproduto.GetNomeProduto(), linha, coluna);
@@ -124,55 +151,65 @@ public class RelatoriosTela extends javax.swing.JFrame {
                 jTableClientes.setValueAt(relatorioproduto.Getquantidade(), linha, coluna);
                 linha++;
                 coluna = 0;
+                
+                 */
             }
 
         } else if (jComboRelatorios.getSelectedItem().equals("Total de Clientes")) {
 
-            Service.RelatorioClientes relatorioclientes = new RelatorioClientes();
-            int quantidade = relatorioclientes.SelectQuantosClientes();
+            //Service.RelatorioClientes relatorioclientes = new RelatorioClientes();
+            //int quantidade = relatorioclientes.SelectQuantosClientes();
+            Mock.CadastrarCliente relatoriocliente = new CadastrarCliente();
 
-            for (int i = 1; i <= quantidade; i++) {
+            if (relatoriocliente.TamanhoListaCliente() == 0) {
+                JOptionPane.showMessageDialog(null, "Nenhum Cliente na base");
+            } else {
 
-                relatorioclientes.SelectCliente(i);
+                for (int i = 1; i <= relatoriocliente.TamanhoListaCliente(); i++) {
 
-                jTableClientes.setValueAt(relatorioclientes.GetNome(), linha, coluna);
-                coluna++;
-                jTableClientes.setValueAt(relatorioclientes.GetCPF(), linha, coluna);
-                coluna++;
-                jTableClientes.setValueAt(relatorioclientes.GetRG(), linha, coluna);
-                coluna++;
-                jTableClientes.setValueAt(relatorioclientes.GetTelefone(), linha, coluna);
-                coluna++;
-                jTableClientes.setValueAt(relatorioclientes.GetCelular(), linha, coluna);
-                coluna++;
-                jTableClientes.setValueAt(relatorioclientes.GetEmail(), linha, coluna);
-                coluna++;
-                jTableClientes.setValueAt(relatorioclientes.GetEstadoCivil(), linha, coluna);
-                linha++;
-                coluna = 0;
-
+                    //relatorioclientes.SelectCliente(i);
+                    jTableClientes.setValueAt(relatoriocliente.ExportarClientes(i).getNome(), linha, coluna);
+                    coluna++;
+                    jTableClientes.setValueAt(relatoriocliente.ExportarClientes(i).getCPF(), linha, coluna);
+                    coluna++;
+                    jTableClientes.setValueAt(relatoriocliente.ExportarClientes(i).getRG(), linha, coluna);
+                    coluna++;
+                    jTableClientes.setValueAt(relatoriocliente.ExportarClientes(i).getTelefone(), linha, coluna);
+                    coluna++;
+                    jTableClientes.setValueAt(relatoriocliente.ExportarClientes(i).getCelular(), linha, coluna);
+                    coluna++;
+                    jTableClientes.setValueAt(relatoriocliente.ExportarClientes(i).getEmail(), linha, coluna);
+                    coluna++;
+                    jTableClientes.setValueAt(relatoriocliente.ExportarClientes(i).getEstadoCivil(), linha, coluna);
+                    linha++;
+                    coluna = 0;
+                }
             }
 
         } else if (jComboRelatorios.getSelectedItem().equals("Total de Vendas")) {
 
-            Service.RelatorioVendas relatoriovendas = new RelatorioVendas();
-            int quantidadevendas = relatoriovendas.SelectQuantidadeVendas();
+            Mock.VendasMock vendasrelatorio = new VendasMock();
 
-            for (int i = 1; i <= quantidadevendas; i++) {
+            //Service.RelatorioVendas relatoriovendas = new RelatorioVendas();
+            //int quantidadevendas = relatoriovendas.SelectQuantidadeVendas();
+            if (vendasrelatorio.TamanhoListaVendas() == 0) {
+                JOptionPane.showMessageDialog(null, "Nenhuma Venda na base");
+            } else {
+                for (int i = 1; i <= vendasrelatorio.TamanhoListaVendas(); i++) {
 
-                relatoriovendas.SelectVendas(i);
+                   //relatoriovendas.SelectVendas(i);
 
-                jTableClientes.setValueAt(relatoriovendas.GetIDVenda(), linha, coluna);
-                coluna++;
-                jTableClientes.setValueAt(relatoriovendas.GetCPFCliente(), linha, coluna);
-                coluna++;
-                jTableClientes.setValueAt(relatoriovendas.GetValorVenda(), linha, coluna);
-                coluna++;
-                jTableClientes.setValueAt(relatoriovendas.GetDataVenda(), linha, coluna);
-                coluna++;
-                jTableClientes.setValueAt(relatoriovendas.GetQuantidadeItens(), linha, coluna);
-                linha++;
-                coluna = 0;
+                    jTableClientes.setValueAt(vendasrelatorio.ExportarVendas(i).getCPFCliente(), linha, coluna);
+                    coluna++;
+                    jTableClientes.setValueAt("R$"+vendasrelatorio.ExportarVendas(i).getTotalValor(), linha, coluna);
+                    coluna++;
+                    jTableClientes.setValueAt(vendasrelatorio.ExportarVendas(i).getDataVenda(), linha, coluna);
+                    coluna++;
+                    jTableClientes.setValueAt(vendasrelatorio.ExportarVendas(i).getQuantidadeItens(), linha, coluna);
+                    linha++;
+                    coluna = 0;
+
+                }
 
             }
 
